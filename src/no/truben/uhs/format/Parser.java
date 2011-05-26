@@ -21,7 +21,7 @@ public class Parser {
 		
 		String[] firstLine = s.nextLine().split(" ");
 		int lines = Integer.parseInt(firstLine[0]);
-		HunkType type = HunkType.valueOf(firstLine[0].toUpperCase());
+		HunkType type = HunkType.valueOf(firstLine[1].toUpperCase());
 		
 		thisHunk.setLines(lines);
 		thisHunk.setHunkType(type);
@@ -46,6 +46,9 @@ public class Parser {
 				else
 					buffer += " " + hintLine;
 				
+				break;
+			case NESTHINT:
+				s.nextLine();
 				break;
 			case TEXT:
 				
