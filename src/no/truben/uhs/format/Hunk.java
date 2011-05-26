@@ -14,6 +14,7 @@ public class Hunk {
 	private int lines;
 	private int link;
 	private int lineNumber;
+	private Hunk linkedHunk;
 	private List<String> hints = new ArrayList<String>();
 	
 	public void addHunk(Hunk hunk) {
