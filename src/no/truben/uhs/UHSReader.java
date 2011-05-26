@@ -10,6 +10,7 @@ public class UHSReader {
 	public static void main(String args[]) {
 		try {
 			Parser.parse(new File("tunguska.uhs"));
+			System.out.println("Ferdig");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

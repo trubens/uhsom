@@ -27,7 +27,7 @@ public class Parser {
 		thisHunk.setHunkType(type);
 		thisHunk.setMainLabel(s.nextLine());
 		thisHunk.setLineNumber(currentLine);
-		
+		System.out.println(thisHunk.getMainLabel());
 		if(key == null)
 			key = Encryption.getKey(thisHunk.getMainLabel());
 		
@@ -69,8 +69,8 @@ public class Parser {
 
 	private static void oldStuff(Scanner s) {
 		final String TERMINATE = "** END OF 88A FORMAT **";
-		while(s.hasNext()) {
-			if(s.equals(TERMINATE))
+		while(s.hasNextLine()) {
+			if(s.nextLine().equals(TERMINATE))
 				break;
 		}
 	}
