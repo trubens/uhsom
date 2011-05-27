@@ -14,7 +14,9 @@ public class UHSReader {
 	public static void main(String args[]) {
 		try {
 			Parser parser = new EasyParser();
-			Hunk h = parser.parse(new File("tunguska.uhs"));
+			//Hunk h = parser.parse(new File("tunguska.uhs"));
+			Hunk h = parser.parse(new File("brokensword-dc.uhs"));
+			
 			HintView hv = new HierarchicalText();
 			hv.DisplayHints(h);
 		} catch (IOException e) {

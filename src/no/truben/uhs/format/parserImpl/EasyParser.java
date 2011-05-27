@@ -42,13 +42,19 @@ public class EasyParser implements Parser {
 		
 		String[] firstLine = s.nextLine().split(" ");
 		int lines = Integer.parseInt(firstLine[0]);
-		HunkType type = HunkType.valueOf(firstLine[1].toUpperCase());
+		
+		HunkType type;
+		try {
+			type = HunkType.valueOf(firstLine[1].toUpperCase());
+		}
+		catch(IllegalArgumentException e) {
+			type = HunkType.UNSUPPORTED;
+		}
 		
 		thisHunk.setLines(lines);
 		thisHunk.setHunkType(type);
 		thisHunk.setMainLabel(s.nextLine());
 		thisHunk.setLineNumber(currentLine);
-		
 		hunkLocations.put(currentLine, thisHunk);
 		
 		if(key == null)
@@ -73,9 +79,6 @@ public class EasyParser implements Parser {
 			case NESTHINT:
 				s.nextLine();
 				break;
-			case TEXT:
-				
-				break;
 			case LINK:
 				thisHunk.setLink(Integer.parseInt(s.nextLine()));
 				hunkLinks.add(thisHunk);
@@ -85,6 +88,8 @@ public class EasyParser implements Parser {
 				line += newHunk.getLines();
 				thisHunk.addHunk(newHunk);
 				break;
+			default:
+				s.nextLine();
 			}
 		}
 		
