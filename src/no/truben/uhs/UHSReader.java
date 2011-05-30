@@ -7,6 +7,7 @@ import no.truben.uhs.format.Hunk;
 import no.truben.uhs.format.Parser;
 import no.truben.uhs.format.parserImpl.EasyParser;
 import no.truben.uhs.view.HintView;
+import no.truben.uhs.view.impl.HTMLView;
 import no.truben.uhs.view.impl.HierarchicalText;
 
 
@@ -17,7 +18,8 @@ public class UHSReader {
 			//Hunk h = parser.parse(new File("tunguska.uhs"));
 			Hunk h = parser.parse(new File("brokensword-dc.uhs"));
 			
-			HintView hv = new HierarchicalText();
+			//HintView hv = new HierarchicalText();
+			HintView hv = new HTMLView();
 			hv.DisplayHints(h);
 		} catch (IOException e) {
 			e.printStackTrace();
